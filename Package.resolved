@@ -39,10 +39,10 @@
     {
       "identity" : "notionswift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/chojnac/NotionSwift.git",
+      "location" : "https://github.com/AdventureX-RGE/NotionSwift",
       "state" : {
-        "revision" : "56c0c3a0dca35583aab0ef26fe2694e4c303bb72",
-        "version" : "0.8.0"
+        "branch" : "main",
+        "revision" : "495f2b1704a8362f36da46a5349f5b840f14a450"
       }
     },
     {

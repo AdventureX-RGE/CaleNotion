@@ -9,7 +9,7 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.89.0"),
-        .package(url: "https://github.com/chojnac/NotionSwift.git", .upToNextMajor(from: "0.8.0")),
+        .package(url: "https://github.com/AdventureX-RGE/NotionSwift", branch: "mainhttps://github.com/AdventureX-RGE/NotionSwift"),
     ],
     targets: [
         .executableTarget(
