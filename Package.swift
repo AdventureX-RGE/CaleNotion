@@ -9,12 +9,14 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.89.0"),
+        .package(url: "https://github.com/chojnac/NotionSwift.git", .upToNextMajor(from: "0.8.0")),
     ],
     targets: [
         .executableTarget(
             name: "App",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
+                .product(name: "NotionSwift", package: "NotionSwift")
             ]
         ),
         .testTarget(name: "AppTests", dependencies: [
