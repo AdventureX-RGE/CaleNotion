@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "foundationwithnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rinsuki/FoundationWithNetworking",
+      "state" : {
+        "revision" : "67e4425413483bde37a7b1f1258d831f24e6ea4d",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "multipart-kit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/multipart-kit.git",
@@ -41,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AdventureX-RGE/NotionSwift",
       "state" : {
-        "branch" : "main",
-        "revision" : "495f2b1704a8362f36da46a5349f5b840f14a450"
+        "revision" : "fa2f42a216e6782b4cf1e41779febf6d973d343f",
+        "version" : "0.1.0"
       }
     },
     {
