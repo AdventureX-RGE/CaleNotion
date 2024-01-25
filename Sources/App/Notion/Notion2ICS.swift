@@ -37,7 +37,13 @@ struct Notion2ICS {
                     return nil
                 }).first else { continue }
 
-                events.append(.init(uid: UUID().uuidString, title: "\(dbName): \(title ?? "Untitled")", start: dateRange.start.date, end: dateRange.end?.date, dateOnly: dateRange.start.dateOnly))
+                var replaceEnd: Date? = nil
+
+                if !dateRange.start.dateOnly && dateRange.end == nil {
+                    replaceEnd = Calendar.current.date(byAdding: .hour, value: 1, to: dateRange.start.date)
+                }
+
+                events.append(.init(uid: UUID().uuidString, title: "\(dbName): \(title ?? "Untitled")", start: dateRange.start.date, end: dateRange.end?.date ?? replaceEnd, dateOnly: dateRange.start.dateOnly))
             }
         }
 
