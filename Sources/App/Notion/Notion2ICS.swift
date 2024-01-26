@@ -12,7 +12,7 @@ struct Notion2ICS {
     }
 
     func fetchEvents() async throws -> [Event] {
-        let notion = NotionClient(accessKeyProvider: StringAccessKeyProvider(accessKey: "secret_MfodkEYNdElLIlVx1GZSXfCrvtgnxdtJRSDcQJNAWzf"))
+        let notion = NotionClient(accessKeyProvider: StringAccessKeyProvider(accessKey: token))
 
         let databases = try await notion.searchDatabase()
 

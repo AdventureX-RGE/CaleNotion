@@ -9,7 +9,7 @@ import Foundation;
 
 func date2DtStringEnd(date: Date) -> String {
     let endFormatter = DateFormatter();
-    endFormatter.dateFormat = "hhmmss";
+    endFormatter.dateFormat = "HHmmss";
     endFormatter.timeZone = TimeZone.current;
     
     return endFormatter.string(from: date);
