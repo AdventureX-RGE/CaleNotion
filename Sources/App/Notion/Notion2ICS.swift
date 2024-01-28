@@ -43,12 +43,12 @@ struct Notion2ICS {
                     replaceEnd = Calendar.current.date(byAdding: .hour, value: 1, to: dateRange.start.date)
                 }
 
-                let meetingLink: URL? = row.properties.compactMap({ (key, value) in
+                let meetingLink = row.properties.compactMap({ (key, value) in
                     if case .url(let url) = value.type {
                         return url
                     }
                     return nil
-                }).filter { url in
+                }).filter { (url: URL) in
                     if let host = url.host() {
                         (host == "meeting.tencent.com") || (host == "meet.google.com") || (host.contains("zoom.us"))
                     } else {
@@ -56,7 +56,7 @@ struct Notion2ICS {
                     }
                 }.first
 
-                let invitee: [Invitee] = row.properties.compactMap { (key, value) in
+                let invitee = row.properties.compactMap { (key, value) in
                     if case .people(let users) = value.type {
                         return users.compactMap { user in
                             if case .person(let person) = user.type {
