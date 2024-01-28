@@ -49,7 +49,7 @@ struct Notion2ICS {
                     }
                     return nil
                 }).filter { (url: URL) in
-                    if let host = url.host() {
+                    if let host = url.host {
                         (host == "meeting.tencent.com") || (host == "meet.google.com") || (host.contains("zoom.us"))
                     } else {
                         false
