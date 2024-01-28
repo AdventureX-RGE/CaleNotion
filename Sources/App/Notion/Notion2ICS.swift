@@ -68,11 +68,15 @@ struct Notion2ICS {
                             }
 
                             return nil
-                        }.first
+                        }
                     }
 
                     return nil
+                }.reduce(into: [Invitee]()) { partialResult, r in
+                    partialResult.append(contentsOf: r)
                 }
+                
+
 
                 let description = await DescriptionManager.shared.find(id: row.id, notion) ?? ""
 
