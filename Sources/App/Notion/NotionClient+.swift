@@ -45,6 +45,18 @@ extension NotionClient {
         }
     }
 
+    func retriveBlock(id: Block.Identifier) async throws -> [ReadBlock] {
+        return try await withCheckedThrowingContinuation { continuation in
+            self.blockChildren(blockId: id) { children in
+                switch children {
+                case .success(let response):
+                    continuation.resume(returning: response.results)
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
 }
 
 extension DateValue {

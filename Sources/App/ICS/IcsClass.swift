@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 慕芸熙 on 2024/1/24.
 //
@@ -11,7 +11,7 @@ func date2DtStringEnd(date: Date) -> String {
     let endFormatter = DateFormatter();
     endFormatter.dateFormat = "HHmmss";
     endFormatter.timeZone = TimeZone.current;
-    
+
     return endFormatter.string(from: date);
 }
 
@@ -83,7 +83,7 @@ public class IcsMain: IcsItem {
 
 public class IcsTimeZone: IcsItem {
     var timezone: TimeZone = TimeZone.current;
-    
+
     override init() {
         super.init();
         self.section = .VTIMEZONE;
@@ -108,6 +108,7 @@ public class IcsEvent: IcsItem {
     var location: String = "";
     var timezone: TimeZone = TimeZone.current;
     var dayOnly: Bool = false;
+    var invitees: [Invitee];
 
     init(_ event: Event) {
         self.dtStart = event.start;
@@ -117,15 +118,19 @@ public class IcsEvent: IcsItem {
         self.location = event.title;
         self.uid = event.uid;
         self.dayOnly = event.dateOnly;
+        self.description = event.description;
+        self.location = event.meeting?.description ?? "";
+        self.invitees = event.invitee;
 
         super.init();
         self.section = .VEVENT;
     }
-    
+
     override func propertiesAsString() -> String {
         var dtStartString = "";
         var dtEndString = "";
-        
+        var inviteeString = "";
+
         if self.dayOnly {
             dtStartString = "DTSTART;VALUE=DATE:\(date2DtStringFront(date: self.dtStart))";
         } else {
@@ -139,6 +144,11 @@ public class IcsEvent: IcsItem {
                 dtEndString = "DTEND;TZID=\(self.timezone.identifier):\(date2DtString(date: endDate))";
             }
         }
+
+        for invitee in invitees {
+            inviteeString += "ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;RSVP=\(invitee.rsvp.description.uppercased());CN=\(invitee.name):MAILTO:\(invitee.email)\n";
+        }
+
         return """
         DTSTAMP:\(date2DtString(date: self.dtStamp))
         \(dtStartString)
@@ -147,6 +157,7 @@ public class IcsEvent: IcsItem {
         UID:\(self.uid)
         DESCRIPTION:\(self.description)
         LOCATION:\(self.location)
+        \(inviteeString)
         """;
     }
 }
@@ -155,12 +166,12 @@ public class IcsAlarm: IcsItem {
     var trigger: IcsTriggerTime = .beforeMinutes(10);
     var action: IcsTriggerAction = .DISPLAY;
     var description: String = "Reminder";
-    
+
     override init() {
         super.init();
         self.section = .VALARM;
     }
-    
+
     override func propertiesAsString() -> String {
         """
         TRIGGER:\(self.trigger.asString())
@@ -169,3 +180,4 @@ public class IcsAlarm: IcsItem {
         """
     }
 }
+ 

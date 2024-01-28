@@ -13,4 +13,22 @@ struct Event {
     let start: Date
     let end: Date?
     let dateOnly: Bool
+    let description: String
+    let meeting: URL?
+    let invitee: [Invitee]
+}
+
+class Invitee {
+    var rsvp: Bool = true;
+    var name: String;
+    var email: String;
+
+    init(name: String, email: String) {
+        self.name = name;
+        self.email = email;
+    }
+
+    func setRsvp(rsvp: Bool) {
+        self.rsvp = rsvp;
+    }
 }

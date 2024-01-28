@@ -43,7 +43,40 @@ struct Notion2ICS {
                     replaceEnd = Calendar.current.date(byAdding: .hour, value: 1, to: dateRange.start.date)
                 }
 
-                events.append(.init(uid: UUID().uuidString, title: "\(dbName): \(title ?? "Untitled")", start: dateRange.start.date, end: dateRange.end?.date ?? replaceEnd, dateOnly: dateRange.start.dateOnly))
+                let meetingLink: URL? = row.properties.compactMap({ (key, value) in
+                    if case .url(let url) = value.type {
+                        return url
+                    }
+                    return nil
+                }).filter { url in
+                    if let host = url.host() {
+                        (host == "meeting.tencent.com") || (host == "meet.google.com") || (host.contains("zoom.us"))
+                    } else {
+                        false
+                    }
+                }.first
+
+                let invitee: [Invitee] = row.properties.compactMap { (key, value) in
+                    if case .people(let users) = value.type {
+                        return users.compactMap { user in
+                            if case .person(let person) = user.type {
+                                if let name = user.name, let email = person.email {
+                                    return Invitee(name: name, email: email)
+                                }
+
+                                return nil
+                            }
+
+                            return nil
+                        }.first
+                    }
+
+                    return nil
+                }
+
+                let description = await DescriptionManager.shared.find(id: row.id, notion) ?? ""
+
+                events.append(.init(uid: UUID().uuidString, title: "\(dbName): \(title ?? "Untitled")", start: dateRange.start.date, end: dateRange.end?.date ?? replaceEnd, dateOnly: dateRange.start.dateOnly, description: description, meeting: meetingLink, invitee: invitee))
             }
         }
 
