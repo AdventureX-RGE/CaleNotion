@@ -41,7 +41,7 @@ actor DescriptionManager {
 
     func isOneDayLater(firstDate: Date, secondDate: Date) -> Bool {
         let calendar = Calendar.current
-        if let nextDay = calendar.date(byAdding: .day, value: 1, to: firstDate) {
+        if let nextDay = calendar.date(byAdding: .hour, value: 3, to: firstDate) {
             // Compare only the date components (year, month, day), ignoring the time components
             let date1Components = calendar.dateComponents([.year, .month, .day], from: nextDay)
             let date2Components = calendar.dateComponents([.year, .month, .day], from: secondDate)
