@@ -1,6 +1,6 @@
-# About CalaNotion
+# About CaleNotion
 
-CalaNotion is a **self-host** service that can connect your Notion's Tasks, Meetings, and any Date-Based Database with any Calendar you use.
+CaleNotion is a **self-host** service that can connect your Notion's Tasks, Meetings, and any Date-Based Database with any Calendar you use.
 <br><br>
 It currently supports the following functions:
 * **Notion-to-Calendar One-Way Sync** featuring ICS Compatibility
