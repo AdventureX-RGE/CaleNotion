@@ -26,6 +26,12 @@ This is a completely free and open-source solution. You can self-host it within 
 
 ### Deployment
 
+#### Auto
+
+[![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/ZJ89D1)
+
+#### Manually 
+
 * If you don't already have one, create an account on [Zeabur](https://zeabur.com/login).
 * Visit the [CaleNotion Template](https://dash.zeabur.com/templates/ZJ89D1).
 * Click on "Next Step."
