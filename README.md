@@ -13,3 +13,8 @@ It currently supports the following functions:
 This is a completely free and open-source solution. You can self-host it within 5 minutes without any technical background, thanks to the support of [Zeabur](https://zeabur.com).
 
 ## Get Started
+
+## Contributor
+
+* [Ryan@AdventureX](https://github.com/underthestars-zhy)
+* [Iewnfod@AdventureX](https://github.com/iewnfod)
