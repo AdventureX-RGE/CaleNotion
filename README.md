@@ -14,7 +14,7 @@ This is a completely free and open-source solution. You can self-host it within 
 
 ## Get Started
 
-## Contributor
+## Contributors
 
 * [Ryan@AdventureX](https://github.com/underthestars-zhy)
 * [Iewnfod@AdventureX](https://github.com/iewnfod)
