@@ -28,7 +28,7 @@ This is a completely free and open-source solution. You can self-host it within 
 
 #### Auto
 
-[![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/ZJ89D1)
+[![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/ZJ89D1?referralCode=underthestars-zhy)
 
 #### Manually 
 
